@@ -31,3 +31,8 @@
 /snapshots
 
 
+# Hardhat dependency resolution output
+/.deps/
+
+# Extra nested configuration folder
+/voting_smart_contract/

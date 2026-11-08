@@ -25,9 +25,9 @@ describe("Voting Contract", function () {
   it("Should initialize candidates correctly", async function () {
     const candidate0 = await voting.getCandidate(0);
     expect(candidate0.name).to.equal("Alice");
-    expect(candidate0.voteCount).to.equal(0n);
+    expect(candidate0.votecount).to.equal(0n);
 
-    const count = await voting.candidatesCount();
+    const count = await voting.candidateCount();
     expect(count).to.equal(3n);
   });
 
@@ -36,7 +36,7 @@ describe("Voting Contract", function () {
     await voting.connect(addr1).vote(0);
 
     const candidate0 = await voting.getCandidate(0);
-    expect(candidate0.voteCount).to.equal(1n);
+    expect(candidate0.votecount).to.equal(1n);
     expect(await voting.hasVoted(addr1.address)).to.be.true;
   });
 
@@ -45,7 +45,7 @@ describe("Voting Contract", function () {
 
     // Attempt to vote again should revert
     await expect(voting.connect(addr1).vote(1)).to.be.revertedWith(
-      "You have already voted.",
+      "You have already voted",
     );
   });
 
